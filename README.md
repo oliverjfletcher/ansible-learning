@@ -20,7 +20,11 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 `python3 -m pip install --upgrade pip`
 
-`python3 -m pip install --user ansible`
+`virtualenv enviroment_name -p python3`
+
+`source enviroment_name/bin/activate`
+
+`pip install ansible`
 
 ## Links
 
