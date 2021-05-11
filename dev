@@ -9,4 +9,4 @@ app02 ansible_ssh_pass=vagrant ansible_ssh_user=vagrant
 db01 ansible_ssh_pass=vagrant ansible_ssh_user=vagrant
 
 [control]
-control ansible_connection=local
+control01 ansible_connection=local
