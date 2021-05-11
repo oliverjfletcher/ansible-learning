@@ -6,25 +6,17 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 `sudo apt-get git`
 
-`sudo apt-get update`
-
-`sudo apt-get install python3.6`
-
-`sudo apt-get install python3.7`
-
 `sudo apt install python3-pip`
-
-`sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1`
-
-`sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2`
 
 `python3 -m pip install --upgrade pip`
 
-`virtualenv enviroment_name -p python3`
+`sudo apt-get install software-properties-common`
 
-`source enviroment_name/bin/activate`
+`sudo apt-add-repository ppa:ansible/ansible`
 
-`pip install ansible`
+`sudo apt-get update`
+
+`sudo apt-get install ansible`
 
 ## Links
 
