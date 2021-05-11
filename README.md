@@ -2,6 +2,26 @@
 
 Repository for work completed during course on Udemy called [Mastering Ansible](https://www.udemy.com/course/mastering-ansible)
 
+## Ansible Install Steps
+
+`sudo add-apt-repository ppa:deadsnakes/ppa`
+
+`sudo apt-get update`
+
+`sudo apt-get install python3.6`
+
+`sudo apt-get install python3.7`
+
+`sudo apt install python3-pip`
+
+`sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1`
+
+`sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2`
+
+`python3 -m pip install --upgrade pip`
+
+`python3 -m pip install --user ansible`
+
 ## Links
 
 [Ansible Documentation](https://docs.ansible.com/ansible/2.9/index.html)
