@@ -4,6 +4,8 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 ## Ansible Install Steps
 
+`git config --global credential.helper store`
+
 `sudo apt-get git`
 
 `sudo apt install python3-pip`
