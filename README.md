@@ -4,6 +4,8 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 ## Ansible Install Steps
 
+`sudo apt-get git`
+
 `sudo add-apt-repository ppa:deadsnakes/ppa`
 
 `sudo apt-get update`
