@@ -6,16 +6,6 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 `sudo apt-get git`
 
-`sudo apt-get install libsecret-1-0 libsecret-1-dev`
-
-`cd /usr/share/doc/git/contrib/credential/libsecret`
-
-`sudo make`
-
-`git config --global credential.helper /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret`
-
-`sudo add-apt-repository ppa:deadsnakes/ppa`
-
 `sudo apt-get update`
 
 `sudo apt-get install python3.6`
