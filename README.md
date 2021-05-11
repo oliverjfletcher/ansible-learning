@@ -28,6 +28,7 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 ## Links
 
-[Ansible Documentation](https://docs.ansible.com/ansible/2.9/index.html)
-[Module Index](https://docs.ansible.com/ansible/2.9/modules/modules_by_category.html)
+- [Vagrant Image](https://app.vagrantup.com/ubuntu/boxes/xenial64)
+- [Ansible Documentation](https://docs.ansible.com/ansible/2.9/index.html)
+- [Module Index](https://docs.ansible.com/ansible/2.9/modules/modules_by_category.html)
 
