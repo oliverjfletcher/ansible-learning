@@ -7,9 +7,9 @@
         pkg:
         - apache2
         - libapache2-mod-wsgi
-        - python-pip
-        - python-apt
-        - python-virtualenv
+        - python3-pip
+        - python3-apt
+        - python3-venv
         state: present
         update_cache: yes    
 
@@ -29,7 +29,18 @@
       notify: restart apache2
  
     - name: setup python virtualenv
-      pip: requirements=/var/www/app/requirements.txt virtualenv=/var/www/app/.venv
+      pip:
+        requirements: /var/www/app/requirements.txt
+        virtualenv: /var/www/app/.venv
+        virtualenv_python: python3
+      notify: restart apache2
+    
+    - name: deactivate default apache site
+      file: path=/etc/apache2/sites-enabled/000-default.conf state=absent
+      notify: restart apache2
+
+    - name: activate app apache site
+      file: src=/etc/apache2/sites-available/app.conf dest=/etc/apache2/sites-enabled/app.conf state=link
       notify: restart apache2
 
   handlers:
