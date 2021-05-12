@@ -1,0 +1,9 @@
+---
+- hosts: control
+  become: true
+  tasks:
+    - name: "install control components"
+      apt:
+        pkg:
+        - curl
+        state: present
