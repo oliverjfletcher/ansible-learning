@@ -2,14 +2,23 @@
 - hosts: webserver
   become: true
   tasks:
-    - name: "install webserver components"
+    - name: Add python repository into sources list
+      ansible.builtin.apt_repository:
+        repo: ppa:deadsnakes/ppa
+        state: present
+
+    - name: install webserver components
       apt:
         pkg:
         - apache2
         - libapache2-mod-wsgi
+        - build-essential
+        - libssl-dev
+        - python-dev
+        - python3.6
         - python3-pip
+        - python-virtualenv 
         - python3-apt
-        - python3-venv
         state: present
         update_cache: yes    
 
@@ -32,7 +41,7 @@
       pip:
         requirements: /var/www/app/requirements.txt
         virtualenv: /var/www/app/.venv
-        virtualenv_python: python3
+        virtualenv_python: python3.6
       notify: restart apache2
     
     - name: deactivate default apache site
