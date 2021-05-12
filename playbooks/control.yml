@@ -7,3 +7,5 @@
         pkg:
         - curl
         state: present
+        update_cache: yes
+        state: present
