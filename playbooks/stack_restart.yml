@@ -27,7 +27,7 @@
   tasks:
     - service: name=apache2 state=started
 
-#Start Load Balancer
+# Start Load Balancer
 - hosts: loadbalancer
   become: true
   tasks:

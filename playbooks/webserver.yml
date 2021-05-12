@@ -17,7 +17,19 @@
     - name: ensure mod_wsgi enabled
       apache2_module: state=present name=wsgi
       notify: restart apache2
-    
+
+    - name: copy demo app source
+      copy: src=../app/src/ dest=/var/www/app mode=0755
+      notify: restart apache2
+
+    - name: copy apache virtual host config
+      copy: src=../app/app.conf dest=/etc/apache2/sites-available mode=0755
+      notify: restart apache2
+ 
+    - name: setup python virtualenv
+      pip: requirements=/var/www/app/requirements.txt virtualenv=/var/www/app/.venv
+      notify: restart apache2
+
   handlers:
     - name: restart apache2
       service: name=apache2 state=restarted
