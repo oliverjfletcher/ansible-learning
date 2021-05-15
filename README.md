@@ -2,6 +2,16 @@
 
 Repository for work completed during course on Udemy called [Mastering Ansible](https://www.udemy.com/course/mastering-ansible)
 
+## Vagrant Install Steps
+
+`brew install virtualbox`
+
+`brew install vagrant`
+
+`vagrant plugin install vagrant-hostmanager`
+
+`vagrant up`
+
 ## Ansible Install Steps
 
 `sudo apt-get git`
