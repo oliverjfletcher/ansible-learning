@@ -1,24 +1,11 @@
+#import Flask
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-import os, socket
-
+#create an instance of Flask
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URI']
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-db = SQLAlchemy(app)
-hostname = socket.gethostname()
-
 @app.route('/')
-def index():
-  return 'Hello, from sunny %s!\n' % hostname
-
-@app.route('/db')
-def dbtest():
-  try:
-      db.create_all()
-  except Exception as e:
-      return e.message + '\n'
-  return 'Database Connected from %s!\n' % hostname
+def home():
+    return "Hello World"
 
 if __name__ == '__main__':
-  app.run()
+
+    app.run(debug=True)
