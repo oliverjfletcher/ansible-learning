@@ -18,10 +18,6 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 `git config --global credential.helper store`
 
-`sudo apt install python3-pip`
-
-`python3 -m pip install --upgrade pip`
-
 `sudo apt-get install software-properties-common`
 
 `sudo apt-add-repository ppa:ansible/ansible`
