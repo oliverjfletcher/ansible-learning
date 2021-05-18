@@ -13,6 +13,7 @@
         - apache2
         - libapache2-mod-wsgi-py3
         - python3-pip
+        - python-virtualenv
         state: present
         update_cache: yes   
 
@@ -33,7 +34,7 @@
 
     - name: setup python virtualenv
       pip:
-        requirements: /var/www/ app.oliverfletcher.io/requirements.txt
+        requirements: /var/www/app.oliverfletcher.io/requirements.txt
         virtualenv: /var/www/app.oliverfletcher.io/.venv
         virtualenv_python: python3.6
       notify: restart apache2
