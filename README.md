@@ -18,10 +18,6 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 `git config --global credential.helper store`
 
-`sudo apt install python3-pip`
-
-`python3 -m pip install --upgrade pip`
-
 `sudo apt-get install software-properties-common`
 
 `sudo apt-add-repository ppa:ansible/ansible`
@@ -32,7 +28,7 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 ## Links
 
-- [Vagrant Image](https://app.vagrantup.com/ubuntu/boxes/xenial64)
+- [Vagrant Image](https://app.vagrantup.com/ubuntu/boxes/bionic64)
 - [Ansible Documentation](https://docs.ansible.com/ansible/2.9/index.html)
 - [Module Index](https://docs.ansible.com/ansible/2.9/modules/modules_by_category.html)
 
