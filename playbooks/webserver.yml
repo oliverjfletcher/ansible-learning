@@ -2,10 +2,14 @@
 - hosts: webserver
   become: true
   tasks:
-    - name: Add python repository into sources list
+    - name: add python repository into sources list
       ansible.builtin.apt_repository:
         repo: ppa:deadsnakes/ppa
         state: present
+
+    - name: set timezone
+      command:
+        cmd: /usr/bin/timedatectl set-timezone Australia/Sydney
 
     - name: install webserver components
       apt:

@@ -2,10 +2,13 @@
 - hosts: control
   become: true
   tasks:
-    - name: "install control components"
+    - name: install control components
       apt:
         pkg:
         - curl
         state: present
         update_cache: yes
         state: present
+    - name: set timezone
+      command:
+        cmd: /usr/bin/timedatectl set-timezone Australia/Sydney

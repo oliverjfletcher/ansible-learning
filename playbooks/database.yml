@@ -2,7 +2,12 @@
 - hosts: database
   become: true
   tasks:
+    - name: set timezone
+      command:
+        cmd: /usr/bin/timedatectl set-timezone Australia/Sydney
+
     - name: install mysql
       apt: name=mysql-server state=present update_cache=yes
+
     - name: ensure mysql started
       service: name=mysql state=started enabled=yes
