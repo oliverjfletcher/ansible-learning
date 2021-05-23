@@ -11,3 +11,64 @@
 
     - name: ensure mysql started
       service: name=mysql state=started enabled=yes
+
+    - name: install mysql tools
+      apt:
+        pkg:
+        - mysql-client
+        - python3-pymysql
+
+    - name: change the authentication plugin of mysql root user to mysql_native_password
+      shell: mysql -u root -e 'UPDATE mysql.user SET plugin="mysql_native_password" WHERE user="root" AND host="localhost"'
+
+    - name: flush privileges
+      shell: mysql -u root -e 'FLUSH PRIVILEGES'
+
+    - name: set mysql root password
+      mysql_user:
+        login_host: 'localhost'
+        login_user: 'root'
+        login_password: ''
+        name: 'root'
+        password: '{{ mysql_root_password }}'
+        state: present
+
+    - name: ensure mysql listening on all ports
+      lineinfile:
+        path: /etc/mysql/mysql.conf.d/mysqld.cnf
+        regexp: ^bind-address
+        line: bind-address = 0.0.0.0
+      notify: restart mysql
+
+    - name: create app user
+      mysql_user:
+        login_user: 'root'
+        login_password: '{{ mysql_root_password }}'
+        name: '{{ app_svc }}'
+        password: '{{ app_pw }}'
+        priv: '*.*:ALL'
+        state: present
+
+    - name: create ~/.my.cnf
+      file:
+        path: ~/.my.cnf
+        state: touch
+    
+    - name: insert into ~/.my.cnf
+      blockinfile:
+        path: ~/.my.cnf
+        block: |
+          [client]
+          user={{ app_svc }}
+          password={{ app_pw }}
+
+    - name: create app database
+      mysql_db:
+        login_user: root
+        login_password: '{{ mysql_root_password }}'        
+        name: app
+        login_user: '{{ app_svc }}'
+
+  handlers:
+    - name: restart mysql
+      service: name=mysql state=restarted

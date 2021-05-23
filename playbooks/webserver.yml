@@ -18,6 +18,7 @@
         - libapache2-mod-wsgi-py3
         - python3-pip
         - python-virtualenv
+        - python3-pymysql
         state: present
         update_cache: yes   
 

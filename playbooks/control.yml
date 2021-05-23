@@ -6,6 +6,7 @@
       apt:
         pkg:
         - curl
+        - mysql-client
         state: present
         update_cache: yes
         state: present
