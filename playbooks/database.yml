@@ -64,10 +64,9 @@
 
     - name: create app database
       mysql_db:
-        login_user: root
-        login_password: '{{ mysql_root_password }}'        
-        name: app
         login_user: '{{ app_svc }}'
+        login_password: '{{ app_pw }}'        
+        name: app
 
   handlers:
     - name: restart mysql
