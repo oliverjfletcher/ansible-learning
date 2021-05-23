@@ -31,8 +31,8 @@
         login_password: ''
         name: 'root'
         password: '{{ mysql_root_password }}'
-        no_log: true
         state: present
+      no_log: True
 
     - name: ensure mysql listening on all ports
       lineinfile:
@@ -47,15 +47,17 @@
         login_password: '{{ mysql_root_password }}'
         name: '{{ app_svc }}'
         password: '{{ app_pw }}'
+        host: '%'
         priv: '*.*:ALL'
-        no_log: true
         state: present
+      no_log: True
 
     - name: create ~/.my.cnf
       file:
         path: ~/.my.cnf
         state: touch
-    
+      no_log: true
+
     - name: insert into ~/.my.cnf
       blockinfile:
         path: ~/.my.cnf
@@ -63,6 +65,7 @@
           [client]
           user={{ app_svc }}
           password={{ app_pw }}
+      no_log: true
 
     - name: create app database
       mysql_db:
