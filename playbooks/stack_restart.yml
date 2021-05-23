@@ -6,18 +6,27 @@
   become: true
   tasks:
     - service: name=nginx state=stopped
+    - wait_for: 
+        port: 80
+        state: drained
 
 # Stop Web Server
 - hosts: webserver
   become: true
   tasks:
     - service: name=apache2 state=stopped
+    - wait_for:
+        port: 80
+        state: stopped
 
 # Restart Database Server
 - hosts: database
   become: true
   tasks:
     - service: name=nginx state=restarted
+    - wait_for:
+        port: 3306
+        state: started
 
 # Bring stack back up
 
@@ -26,10 +35,14 @@
   become: true
   tasks:
     - service: name=apache2 state=started
+    - wait_for:
+        port: 80
+        state: started
 
 # Start Load Balancer
 - hosts: loadbalancer
   become: true
   tasks:
     - service: name=nginx state=started
-
+    - wait_for:
+        port: 80
