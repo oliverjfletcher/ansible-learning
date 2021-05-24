@@ -18,13 +18,17 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 `git config --global credential.helper store`
 
-`sudo apt-get install software-properties-common`
+`pip install virtualenv`
 
-`sudo apt-add-repository ppa:ansible/ansible`
+`cd ansible-learning`
 
-`sudo apt-get update`
+`virtualenv venv`
 
-`sudo apt-get install ansible`
+`source venv/bin/activate`
+
+`pip3 install ansible`
+
+`pip3 install ansible-lint`
 
 ## Links
 
