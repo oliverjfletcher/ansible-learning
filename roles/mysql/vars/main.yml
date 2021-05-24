@@ -1,6 +1,6 @@
 ---
 # vars file for mysql
-vars:
-   mysql_root_password: W3lcom388
-   app_svc: appsvc01
-   app_pw: W3lcom344
+mysql_root_password: Password1
+app_svc: appsvc01
+app_pw: Password2
+app_db: app
