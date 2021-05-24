@@ -1,0 +1,13 @@
+---
+# tasks file for control
+- name: install control components
+  apt:
+    pkg:
+    - curl
+    - mysql-client
+    state: present
+    update_cache: yes
+    state: present
+- name: set timezone
+  command:
+    cmd: /usr/bin/timedatectl set-timezone Australia/Sydney
