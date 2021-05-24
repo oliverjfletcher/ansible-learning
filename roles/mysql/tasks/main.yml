@@ -36,8 +36,8 @@
   lineinfile:
     path: /etc/mysql/mysql.conf.d/mysqld.cnf
     regexp: ^bind-address
-    line: bind-address = 0.0.0.0
-  notify: restart mysql
+    line: bind-address = "{{ ansible_all_ipv4_addresses[1] }}"
+    notify: restart mysql
 
 - name: create app user
   mysql_user:

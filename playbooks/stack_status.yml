@@ -30,6 +30,7 @@
     - name: verify mysql is listening on port 3306
       wait_for:
         port: 3306
+        host: "{{ ansible_all_ipv4_addresses[1] }}"
         timeout: 1
 - hosts: control
   tasks:
