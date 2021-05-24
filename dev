@@ -8,10 +8,5 @@ app02 ansible_ssh_pass=vagrant ansible_ssh_user=vagrant
 [database]
 db01 ansible_ssh_pass=vagrant ansible_ssh_user=vagrant
 
-[database:vars]
-mysql_root_password=W3lcom388
-app_svc=appsvc01
-app_pw=W3lcom344
-
 [control]
 control01 ansible_connection=local
