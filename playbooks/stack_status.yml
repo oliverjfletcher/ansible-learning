@@ -39,7 +39,8 @@
       with_items: "{{ groups.loadbalancer }}"
       register: lb_index
 
-    - fail: msg="index failed to return content"
+    - name: fail message to return for lb
+      fail: msg="index failed to return content"
       when: "'Hello, from sunny' not in item.content"
       with_items: "{{ lb_index.results }}"
 
@@ -48,7 +49,8 @@
       with_items: "{{ groups.loadbalancer }}"
       register: lb_db
 
-    - fail: msg="db failed to return content"
+    - name: fail message to return for db
+      fail: msg="db failed to return content"
       when: "'Database Connected from' not in item.content"
       with_items: "{{ lb_db.results }}"
 
@@ -59,7 +61,8 @@
       with_items: "{{ groups.webserver }}"
       register: app_index
 
-    - fail: msg="index failed to return content"
+    - name: fail message to return for lb
+      fail: msg="index failed to return content"
       when: "'Hello, from sunny {{ item.item }}!' not in item.content"
       with_items: "{{ app_index.results }}"
 
@@ -68,6 +71,7 @@
       with_items: "{{ groups.webserver }}"
       register: app_db
 
-    - fail: msg="db failed to return content"
+    - name: fail message to return for db
+      fail: msg="db failed to return content"
       when: "'Database Connected from {{ item.item }}!' not in item.content"
       with_items: "{{ app_db.results }}"
