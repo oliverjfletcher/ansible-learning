@@ -1,0 +1,4 @@
+---
+db_name: appsvc01
+db_user: Password2
+db_pass: app
