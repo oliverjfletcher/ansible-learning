@@ -30,6 +30,14 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 `pip3 install ansible-lint`
 
+## Ansible Vault
+
+`ansible-vault create vault`
+
+`echo "VAULT-PW" > ~/.vault_watchword.txt`
+
+`chmod 0600 ~/.vault_watchword.txt`
+
 ## Links
 
 - [Vagrant Image](https://app.vagrantup.com/ubuntu/boxes/bionic64)
