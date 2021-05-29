@@ -30,7 +30,7 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 `pip3 install ansible-lint`
 
-## Ansible Vault
+## Ansible Vault Configuration
 
 `ansible-vault create vault`
 
