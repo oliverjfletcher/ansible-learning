@@ -13,7 +13,6 @@
     - python3-dev
     - libmysqlclient-dev
     state: present
-    update_cache: yes
 
 - name: copy app source
   copy: src=app/src/ dest=/var/www/app.oliverfletcher.io mode=0755
@@ -37,3 +36,5 @@
 - name: activate app apache site
   file: src=/etc/apache2/sites-available/app.conf dest=/etc/apache2/sites-enabled/app.conf state=link
   notify: restart apache2
+
+- tags: ['app']

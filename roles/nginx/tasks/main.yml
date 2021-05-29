@@ -5,10 +5,15 @@
     cmd: /usr/bin/timedatectl set-timezone Australia/Sydney
 
 - name: install nginx
-  apt: name=nginx state=present update_cache=yes
+  apt: 
+    name: nginx 
+    state: present
 
 - name: ensure nginx started
-  service: name=nginx state=started enabled=yes
+  service: 
+    name: nginx 
+    state: started 
+    enabled: yes
 
 - name: configure nginx site
   template: src=nginx.conf.j2 dest=/etc/nginx/sites-available/app mode=0644
@@ -21,3 +26,5 @@
 - name: activate nginx site
   file: src=/etc/nginx/sites-available/app dest=/etc/nginx/sites-enabled/app state=link
   notify: restart nginx
+
+- tags: ['nginx']

@@ -70,3 +70,5 @@
     login_user: '{{ app_svc }}'
     login_password: '{{ app_pw }}'
     name: '{{ app_db }}'
+
+- tags: ['mysql']
