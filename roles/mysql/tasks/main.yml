@@ -3,32 +3,32 @@
 - name: set timezone
   command:
     cmd: /usr/bin/timedatectl set-timezone Australia/Sydney
-- tags: ['configure']
+  tags: ['configure']
 
 - name: install mysql
   apt: 
     pkg: mysql-server 
     state: present
-- tags: ['packages']
+  tags: ['packages']
 
 - name: ensure mysql started
   service: name=mysql state=started enabled=yes
-- tags: ['configure']
+  tags: ['configure']
 
 - name: install mysql tools
   apt:
     pkg:
     - mysql-client
     - python3-pymysql
-- tags: ['packages']
+  tags: ['packages']
 
 - name: change the authentication plugin of mysql root user to mysql_native_password
   shell: mysql -u root -e 'UPDATE mysql.user SET plugin="mysql_native_password" WHERE user="root" AND host="localhost"'
-- tags: ['configure']
+  tags: ['configure']
 
 - name: flush privileges
   shell: mysql -u root -e 'FLUSH PRIVILEGES'
-- tags: ['configure']
+  tags: ['configure']
 
 - name: set mysql root password
   mysql_user:
@@ -39,7 +39,7 @@
     password: '{{ mysql_root_password }}'
     state: present
   no_log: true
-- tags: ['configure']
+  tags: ['configure']
 
 - name: ensure mysql listening on all ports
   lineinfile:
@@ -47,7 +47,7 @@
     regexp: ^bind-address
     line: bind-address = "{{ ansible_all_ipv4_addresses[1] }}"
     notify: restart mysql
-- tags: ['configure']
+  tags: ['configure']
 
 - name: create app user
   mysql_user:
@@ -59,14 +59,14 @@
     priv: '*.*:ALL'
     state: present
   no_log: true
-- tags: ['configure']
+  tags: ['configure']
 
 - name: create ~/.my.cnf
   file:
     path: ~/.my.cnf
     state: touch
   no_log: true
-- tags: ['configure']
+  tags: ['configure']
 
 - name: insert into ~/.my.cnf
   blockinfile:
@@ -76,11 +76,11 @@
       user={{ app_svc }}
       password={{ app_pw }}
   no_log: true
-- tags: ['configure']
+  tags: ['configure']
 
 - name: create app database
   mysql_db:
     login_user: '{{ app_svc }}'
     login_password: '{{ app_pw }}'
     name: '{{ app_db }}'
-- tags: ['configure']
+  tags: ['configure']

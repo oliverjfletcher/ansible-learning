@@ -6,9 +6,9 @@
     - curl
     - mysql-client
     state: present
-- tags: ['packages']
+  tags: ['packages']
 
 - name: set timezone
   command:
     cmd: /usr/bin/timedatectl set-timezone Australia/Sydney
-- tags: ['configure']
+  tags: ['configure']

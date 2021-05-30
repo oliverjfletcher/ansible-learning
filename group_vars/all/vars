@@ -1,4 +1,4 @@
 ---
-db_name: app
-db_user: appsvc01
-db_pass: "{{ vault_db_pass }}"
+app_db: app
+app_svc: appsvc01
+app_pass: "{{ vault_db_pass }}"

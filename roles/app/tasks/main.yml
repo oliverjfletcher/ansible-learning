@@ -4,7 +4,7 @@
   ansible.builtin.apt_repository:
     repo: ppa:deadsnakes/ppa
     state: present
-- tags: ['packages']
+  tags: ['packages']
 
 - name: install webserver components
   apt:
@@ -14,17 +14,22 @@
     - python3-dev
     - libmysqlclient-dev
     state: present
-- tags: ['packages']
+  tags: ['packages']
 
 - name: copy app source
   copy: src=app/src/ dest=/var/www/app.oliverfletcher.io mode=0755
   notify: restart apache2
-- tags: ['configure']
+  tags: ['configure']
+
+- name: copy app.wsgi
+  template: src=app.wsgi.j2 dest=/var/www/app.oliverfletcher.io/app.wsgi mode=0755
+  notify: restart apache2
+  tags: ['configure']
 
 - name: copy apache virtual host config
   copy: src=app/app.conf dest=/etc/apache2/sites-available mode=0755
   notify: restart apache2
-- tags: ['configure']
+  tags: ['configure']
 
 - name: setup python virtualenv
   pip:
@@ -32,14 +37,14 @@
     virtualenv: /var/www/app.oliverfletcher.io/.venv
     virtualenv_python: python3.6
   notify: restart apache2
-- tags: ['configure']
+  tags: ['configure']
 
 - name: deactivate default apache site
   file: path=/etc/apache2/sites-enabled/000-default.conf state=absent
-  notify: restart apache2
-- tags: ['configure']
+  notify: restart apache2 
+  tags: ['configure']
 
 - name: activate app apache site
   file: src=/etc/apache2/sites-available/app.conf dest=/etc/apache2/sites-enabled/app.conf state=link
   notify: restart apache2
-- tags: ['configure']
+  tags: ['configure']
