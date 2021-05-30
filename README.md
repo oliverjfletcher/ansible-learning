@@ -38,6 +38,18 @@ Repository for work completed during course on Udemy called [Mastering Ansible](
 
 `chmod 0600 ~/.vault_watchword.txt`
 
+## Ansible Commands
+
+`ansible-playbook site.yml --list-tasks`
+
+`ansible-playbook site.yml --start-at-task="install packages"`
+
+`ansible-playbook playbook.yml --step`
+
+`ansible-playbook --syntax-check site.yml`
+
+`ansible-playbook --check`
+
 ## Links
 
 - [Vagrant Image](https://app.vagrantup.com/ubuntu/boxes/bionic64)
