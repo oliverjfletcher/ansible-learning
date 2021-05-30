@@ -19,7 +19,7 @@
   shell: ls -l /etc/nginx/sites-enabled/
   register: active
   changed_when: "active.stdout_lines != sites.keys()"
- - tags: ['configure']
+- tags: ['configure']
 
 - name: de-activate default nginx site
   file: path=/etc/nginx/sites-enabled/default state=absent
